@@ -1,0 +1,168 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+	<script>
+		function get_rand(min,max){
+			var r = min - 0.5 + Math.random()*(max-min+1);
+			return Math.round(r);
+		}
+		function do_it(){
+			var sssr = '<table id="Table">';
+			for (var i=1; i < 6; i++){
+				sssr = sssr + '<tr>';
+				for (var j=1; j < 6; j++){
+					sssr = sssr + '<td>'+get_rand(1,20)+'</td>';
+				}
+				sssr = sssr + '</tr>';
+			}
+			sssr = sssr + '</table>';
+			document.getElementById('pole').innerHTML = sssr;
+		}
+		
+		function show(){
+			var table = document.getElementById('Table');
+			for (var i=0; i<table.rows.length; i++) {
+				for (var j=0; j<table.rows[0].cells.length; j++) {
+					var TD=table.rows[i].cells[j];
+					if (TD.innerHTML == 15) {
+						TD.style.backgroundColor = "green";
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="push" value="Конпка" onClick="do_it()"  >
+	<input type="button" id="push" value="Конпка2" onClick="show()"  >
+	<div id="pole">
+		
+	</div>
+	<canvas id="smile" width="800" height="600">
+		<p>Ваш браузер не поддерживает рисование!</p>
+	</canvas>
+	<script>
+		var myCanvas=document.getElementById('smile');
+		var cxt=myCanvas.getContext('2d');
+		
+		var x0 = 200;
+		var y0 = 200;
+		
+		var a = 85;
+		var b = 130;
+		
+		var N = 50;
+		
+		var alpha = 0; 
+		var step = (2*Math.PI)/N;
+		
+		cxt.beginPath();
+		cxt.moveTo(x0+a,y0);
+		
+		for (var i=0; i <= N; i++) {
+			var x = x0 + a*Math.cos(alpha);
+			var y = y0 + b*Math.sin(alpha);
+			alpha += step; 
+			cxt.lineTo(x,y);
+		}
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#FF3333';
+		cxt.fill();
+		
+		cxt.moveTo(x0,y0+b);
+		cxt.lineTo(x0,y0-b);
+		cxt.stroke();
+		//
+		
+		cxt.beginPath();
+		cxt.arc(x0+25, 100, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+	
+		cxt.beginPath();
+		cxt.arc(x0-25, 100, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.arc(x0+60, 150, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.arc(x0-60, 150, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.arc(x0+20, 160, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.arc(x0-20, 160, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.arc(x0+50, 210, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.arc(x0-50, 210, 10, 0, 2 * Math.PI, false);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+	
+		cxt.beginPath();
+		cxt.moveTo(x0-15,y0-b);
+		cxt.lineTo(x0-15,y0-b-15);
+		cxt.arc(x0, y0-b-15, 15, Math.PI,0, false);
+		cxt.moveTo(x0+15,y0-b-15);
+		cxt.lineTo(x0+15,y0-b);
+		cxt.lineTo(x0-15,y0-b);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.moveTo(x0,y0-b-30);
+		cxt.lineTo(x0-30,y0-b-60);
+		cxt.lineTo(x0-45,y0-b-55);
+		cxt.lineTo(x0-32,y0-b-53);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();
+		
+		cxt.beginPath();
+		cxt.moveTo(x0,y0-b-30);
+		cxt.lineTo(x0+30,y0-b-60);
+		cxt.lineTo(x0+45,y0-b-55);
+		cxt.lineTo(x0+32,y0-b-53);
+		cxt.closePath();
+		cxt.stroke();
+		cxt.fillStyle = '#000';
+		cxt.fill();	
+	</script>
+</body>
+</html>
